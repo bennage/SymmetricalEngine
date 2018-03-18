@@ -25,11 +25,39 @@ namespace Specs
             Assert.Equal(r[0], 2);
         }
 
+        [Fact]
         public void from_1_to_3()
         {
             var r = Movement.Route(1, 3, space).ToArray();
             Assert.Equal(r[0], 2);
             Assert.Equal(r[1], 3);
+        }
+
+        [Fact]
+        public void from_1_to_5()
+        {
+            var r = Movement.Route(1, 5, space).ToArray();
+            Assert.Equal(r[0], 2);
+            Assert.Equal(r[1], 3);
+            Assert.Equal(r[2], 4);
+            Assert.Equal(r[3], 5);
+        }
+
+        [Fact]
+        public void from_5_to_1()
+        {
+            var r = Movement.Route(5, 1, space).ToArray();
+            Assert.Equal(r[0], 2);
+            Assert.Equal(r[1], 1);
+        }
+
+        [Fact]
+        public void from_5_to_4()
+        {
+            var r = Movement.Route(5, 4, space).ToArray();
+            Assert.Equal(r[0], 2);
+            Assert.Equal(r[1], 3);
+            Assert.Equal(r[2], 4);
         }
     }
 
