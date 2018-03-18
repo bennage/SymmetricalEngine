@@ -38,7 +38,8 @@ public static class Movement
 
             foreach (var neighbor in current.JumpRoutes)
             {
-                if (closedSet[neighbor]) continue;
+                // have we already closed the neighbor?
+                if (closedSet.ContainsKey(neighbor)) continue;
 
                 var costToMoveToNeighbor = 1;
                 var tentativeScore = gScore[current.Id] + costToMoveToNeighbor;
@@ -66,13 +67,13 @@ public static class Movement
     {
         var path = new[] { currentId };
 
-        while (cameFrom[currentId] > 0)
+        while (cameFrom.ContainsKey(currentId))
         {
             currentId = cameFrom[currentId];
-            path.Append(currentId);
+            path = path.Append(currentId).ToArray();
         }
 
         // remove starting sector id since we're already there
-        return path.Skip(1).Reverse();
+        return path.Reverse().Skip(1);
     }
 }

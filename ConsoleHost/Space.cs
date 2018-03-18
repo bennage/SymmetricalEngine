@@ -16,5 +16,6 @@ public class Space
     public void AddSector(int sectorId, IEnumerable<int> routes)
     {
         var sector = new Sector(sectorId, routes);
+        Sectors.Add(sectorId, sector);
     }
 }
